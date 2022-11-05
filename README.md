@@ -25,3 +25,9 @@ git clone git@github.com:google/vim-maktaba.git
 git clone git@github.com:nathanaelkane/vim-indent-guides.git
 
 git clone git@github.com:MaxMEllon/vim-jsx-pretty.git
+
+Local Ubuntu server lag? 
+
+```shell
+$ sudo sed -i 's/wifi.powersave = 3/wifi.powersave = 2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+```
