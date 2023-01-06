@@ -14,7 +14,7 @@ git clone git@github.com:vim-airline/vim-airline.git
 
 git clone git@github.com:vim-airline/vim-airline-themes.git
 
-git clone git@github.com:ap/vim-css-color.git
+git clone git@github.com:lilydjwg/colorizer.git
 
 git clone git@github.com:google/vim-codefmt.git
 
