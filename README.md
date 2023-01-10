@@ -26,7 +26,9 @@ git clone git@github.com:nathanaelkane/vim-indent-guides.git
 
 git clone git@github.com:MaxMEllon/vim-jsx-pretty.git
 
-Local Ubuntu server lag? 
+As the time of writing (2023/01/09), `nvim-lspconfig` doesn't work with nvim with version > 0.8.1
+
+Local Ubuntu server lag?
 
 ```shell
 $ sudo sed -i 's/wifi.powersave = 3/wifi.powersave = 2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
