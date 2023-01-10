@@ -1,12 +1,3 @@
-" plugins:
-"  * nerdtree
-"  * vim-airline
-"  * indentLine
-"  * gruvbox
-"  * vim-slp
-"  * async.vim
-"  * rainbow parentheses https://github.com/junegunn/rainbow_parentheses.vim.git
-"  * coq_vim https://github.com/ms-jpq/coq_nvim.git
 set nocompatible
 
 " colorscheme
