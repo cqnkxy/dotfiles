@@ -1,3 +1,10 @@
+" plugins:
+"  * nerdtree
+"  * vim-airline
+"  * indentLine
+"  * gruvbox
+"  * vim-slp
+"  * async.vim
 set nocompatible
 
 " colorscheme
@@ -32,7 +39,6 @@ let g:coq_settings = {
     \}
 
 " vim local
-set t_Co=256
 set number
 set autoindent
 set is hls
@@ -40,13 +46,15 @@ set backspace=indent,eol,start
 set pastetoggle=<F2>
 set ignorecase
 set smartcase
-set nowrap
 hi IncSearch ctermfg=white ctermbg=black
 syntax on
 filetype plugin indent on
 packloadall
 set tabstop=2 sw=2 expandtab smarttab softtabstop=2
 
+" treat visually wrapped line as a separate line when moving cursor
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
