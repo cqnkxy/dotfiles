@@ -1,5 +1,7 @@
 " plugins:
 "  * nerdtree
+" plugins:
+"  * nerdtree
 "  * vim-airline
 "  * indentLine
 "  * gruvbox
@@ -53,8 +55,10 @@ packloadall
 set tabstop=2 sw=2 expandtab smarttab softtabstop=2
 
 " treat visually wrapped line as a separate line when moving cursor
-nnoremap <expr> j v:count ? 'j' : 'gj'
-nnoremap <expr> k v:count ? 'k' : 'gk'
+noremap <expr> j v:count ? 'j' : 'gj'
+noremap <expr> k v:count ? 'k' : 'gk'
+noremap <expr> $ v:count ? '$' : 'g$'
+noremap <expr> 0 v:count ? '0' : 'g0'
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
