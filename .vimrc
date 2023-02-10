@@ -1,12 +1,3 @@
-" plugins:
-"  * nerdtree
-" plugins:
-"  * nerdtree
-"  * vim-airline
-"  * indentLine
-"  * gruvbox
-"  * vim-slp
-"  * async.vim
 set nocompatible
 
 " colorscheme
