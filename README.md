@@ -22,7 +22,7 @@ git clone git@github.com:google/vim-glaive.git
 
 git clone git@github.com:google/vim-maktaba.git
 
-git clone git@github.com:nathanaelkane/vim-indent-guides.git
+git clone git@github.com:lukas-reineke/indent-blankline.nvim.git
 
 git clone git@github.com:MaxMEllon/vim-jsx-pretty.git
 
