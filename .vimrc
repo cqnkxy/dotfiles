@@ -17,6 +17,7 @@ colorscheme gruvbox
 " nerdtree
 nmap <leader>] :NERDTreeToggle<CR>
 nmap <leader>\ :NERDTreeFocus<CR>
+let g:NERDTreeIgnore = ['^bazel-.*', '^node_modules$']
 
 " google vim-codefmt
 nnoremap ff :FormatCode<CR>
