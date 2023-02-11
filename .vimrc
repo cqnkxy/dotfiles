@@ -45,6 +45,8 @@ syntax on
 filetype plugin indent on
 packloadall
 set tabstop=2 sw=2 expandtab smarttab softtabstop=2
+" show tab as '| '.
+set list lcs=tab:\|\
 
 " treat visually wrapped line as a separate line when moving cursor
 noremap <expr> j v:count ? 'j' : 'gj'
