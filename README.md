@@ -26,8 +26,6 @@ git clone git@github.com:Yggdroot/indentLine.git
 
 git clone git@github.com:MaxMEllon/vim-jsx-pretty.git
 
-As the time of writing (2023/01/09), `nvim-lspconfig` doesn't work with nvim with version > 0.8.1
-
 Local Ubuntu server lag?
 
 ```shell
