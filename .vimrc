@@ -41,6 +41,7 @@ set pastetoggle=<F2>
 set ignorecase
 set smartcase
 hi IncSearch ctermfg=white ctermbg=black
+hi Search cterm=NONE ctermfg=white ctermbg=darkblue
 syntax on
 filetype plugin indent on
 packloadall
