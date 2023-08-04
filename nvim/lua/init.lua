@@ -26,6 +26,14 @@ for _, lsp in pairs(servers) do
   }))
 end
 
+-- indent_blankline
+vim.opt.list = true
+vim.opt.listchars:append "eol:↴"
+
+require("indent_blankline").setup {
+    show_end_of_line = true,
+}
+
 -- https://neovim.io/doc/user/diagnostic.html
 vim.diagnostic.config({
   virtual_text = false,
