@@ -25,9 +25,6 @@ let g:airline_theme='deus'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|.cache\|dist'
 let g:ctrlp_working_path_mode = 'r'
 
-" indent-blankline
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
 " coq
 let g:coq_settings = {
     \ 'auto_start': 'shut-up',
