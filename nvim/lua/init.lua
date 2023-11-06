@@ -28,6 +28,9 @@ end
 
 -- indent_blankline
 require("ibl").setup()
+vim.opt.listchars:append "eol:↲"
+vim.opt.listchars:append "tab:¦ "
+vim.opt.listchars:append "space:."
 
 -- https://neovim.io/doc/user/diagnostic.html
 vim.diagnostic.config({
