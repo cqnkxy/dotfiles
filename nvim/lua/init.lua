@@ -26,8 +26,7 @@ for _, lsp in pairs(servers) do
   }))
 end
 
--- indent_blankline
-require("ibl").setup()
+-- indentation
 vim.opt.listchars:append "eol:↲"
 vim.opt.listchars:append "tab:¦ "
 vim.opt.listchars:append "space:."
