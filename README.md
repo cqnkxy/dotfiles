@@ -22,8 +22,6 @@ git clone git@github.com:google/vim-glaive.git
 
 git clone git@github.com:google/vim-maktaba.git
 
-git clone git@github.com:lukas-reineke/indent-blankline.nvim.git
-
 git clone git@github.com:MaxMEllon/vim-jsx-pretty.git
 
 Local Ubuntu server lag?
