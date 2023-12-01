@@ -48,8 +48,9 @@ packloadall
 set tabstop=2 sw=2 expandtab smarttab softtabstop=2
 
 " Fold
-set.foldmethod=indent
-autocmd.BufReadPost,FileReadPost.*.normal.zR
+set foldmethod=indent
+set foldlevelstart=99
+autocmd BufReadPost,FileReadPost * normal zR
 
 " treat visually wrapped line as a separate line when moving cursor
 noremap <expr> j v:count ? 'j' : 'gj'
