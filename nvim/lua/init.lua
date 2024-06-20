@@ -26,11 +26,6 @@ for _, lsp in pairs(servers) do
   }))
 end
 
--- indentation
-vim.opt.listchars:append "eol:↲"
-vim.opt.listchars:append "tab:¦ "
-vim.opt.listchars:append "space:."
-
 -- https://neovim.io/doc/user/diagnostic.html
 vim.diagnostic.config({
   virtual_text = false,
@@ -40,3 +35,23 @@ vim.diagnostic.config({
 -- Show line diagnostics automatically in hover window
 vim.o.updatetime = 250
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
+-- indentation
+vim.opt.list = true
+vim.opt.listchars:append "eol:↲"
+vim.opt.listchars:append "tab:| "
+vim.opt.listchars:append "space:."
+
+-- Function to toggle vim.opt.list and vim.opt.number
+function ToggleListCharsAndNumber()
+  if vim.opt.list:get() then
+    vim.opt.list = false
+    vim.opt.number = false
+  else
+    vim.opt.list = true
+    vim.opt.number = true
+  end
+end
+
+-- Map <leader>l to toggle list characters and number
+vim.api.nvim_set_keymap('n', '<leader>l', ':lua ToggleListCharsAndNumber()<CR>', { noremap = true, silent = true })
