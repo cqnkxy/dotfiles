@@ -14,15 +14,11 @@ git clone git@github.com:vim-airline/vim-airline.git
 
 git clone git@github.com:vim-airline/vim-airline-themes.git
 
-git clone git@github.com:lilydjwg/colorizer.git
-
 git clone git@github.com:google/vim-codefmt.git
 
 git clone git@github.com:google/vim-glaive.git
 
 git clone git@github.com:google/vim-maktaba.git
-
-git clone git@github.com:MaxMEllon/vim-jsx-pretty.git
 
 Local Ubuntu server lag?
 
