@@ -38,12 +38,6 @@ vim.diagnostic.config({
 vim.o.updatetime = 250
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
--- indentation
-vim.opt.list = true
-vim.opt.listchars:append "eol:↲"
-vim.opt.listchars:append "tab:| "
-vim.opt.listchars:append "space:."
-
 -- Function to toggle vim.opt.list and vim.opt.number
 function ToggleListCharsAndNumber()
   if vim.opt.list:get() then
