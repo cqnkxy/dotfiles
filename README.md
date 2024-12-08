@@ -2,8 +2,6 @@ git clone https://github.com/ms-jpq/coq.artifacts.git
 
 git clone https://github.com/ms-jpq/coq_nvim.git
 
-git clone https://github.com/kien/ctrlp.vim.git
-
 git clone https://github.com/nvim-treesitter/nvim-treesitter.git
 
 git clone https://github.com/gruvbox-community/gruvbox.git
