@@ -6,6 +6,9 @@ vim.o.background = 'dark'
 vim.g.gruvbox_contrast_dark = 'hard'
 vim.cmd('colorscheme gruvbox')
 
+-- Airline theme
+vim.g.airline_theme = 'deus'
+
 -- treesitter config
 -- https://github.com/nvim-treesitter/nvim-treesitter
 require'nvim-treesitter.configs'.setup {
@@ -38,37 +41,11 @@ vim.g.NERDTreeWinSize = '50'
 
 -- Google vim-codefmt
 vim.api.nvim_set_keymap('n', 'ff', ':FormatCode<CR>', { noremap = true, silent = true })
--- Disable compatibility with vi
-vim.o.compatible = false
-
--- Colorscheme
-vim.o.background = 'dark'
-vim.g.gruvbox_contrast_dark = 'hard'
-vim.cmd('colorscheme gruvbox')
-
--- NERDTree
-vim.api.nvim_set_keymap('n', '<leader>]', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>\\', ':NERDTreeFocus<CR>', { noremap = true, silent = true })
-vim.g.NERDTreeIgnore = { '^bazel-.*', '^node_modules$' }
-vim.g.NERDTreeWinSize = '50'
-
--- Google vim-codefmt
-vim.api.nvim_set_keymap('n', 'ff', ':FormatCode<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('x', 'fl', ':FormatLines<CR>', { noremap = true, silent = true })
-
--- Rainbow Parentheses
-vim.api.nvim_create_autocmd('VimEnter', {
-  pattern = '*',
-  command = 'RainbowParentheses'
-})
-vim.g.rainbow_pairs = {{ '(', ')' }, { '[', ']' }, { '{', '}' }}
 
 -- telescope
 vim.api.nvim_set_keymap('n', '<C-P>', ':Telescope find_files<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-]>', ':Telescope find_files<CR>', { noremap = true, silent = true })
-
--- Airline theme
-vim.g.airline_theme = 'deus'
 
 -- Coq
 vim.g.coq_settings = {
