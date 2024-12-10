@@ -24,6 +24,8 @@ git clone https://github.com/nvim-lua/plenary.nvim.git
 
 git clone https://github.com/nvim-telescope/telescope.nvim.git
 
+git clone https://github.com/echasnovski/mini.indentscope.git
+
 Local Ubuntu server lag?
 
 ```shell
