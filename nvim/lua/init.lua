@@ -31,7 +31,8 @@ end
 -- https://neovim.io/doc/user/diagnostic.html
 vim.diagnostic.config({
   virtual_text = false,
-  update_in_insert = false
+  update_in_insert = false,
+  float = { border = "rounded" },
 })
 
 -- Show line diagnostics automatically in hover window
