@@ -4,7 +4,7 @@ font-size = 14
 adjust-cell-height = 8%
 
 # color
-theme = iTerm2 Smoooooth
+background = 15191e
 
 # keybind
 keybind = super+backspace=text:\x15
