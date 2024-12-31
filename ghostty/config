@@ -1,10 +1,10 @@
 # font
-font-family="Ubuntu mono"
-font-size=14
-adjust-cell-height=8%
+font-family = "Ubuntu mono"
+font-size = 14
+adjust-cell-height = 8%
 
 # color
-background="#15191e"
+theme = iTerm2 Smoooooth
 
 # keybind
 keybind = super+backspace=text:\x15
