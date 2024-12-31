@@ -52,3 +52,6 @@ end
 
 -- Map <leader>l to toggle list characters and number
 vim.api.nvim_set_keymap('n', '<leader>l', ':lua ToggleListCharsAndNumber()<CR>', { noremap = true, silent = true })
+
+-- also yank to the system clipboard
+vim.keymap.set('v', 'y', '"+y', { noremap = true })

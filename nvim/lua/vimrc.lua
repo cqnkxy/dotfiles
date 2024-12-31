@@ -92,7 +92,7 @@ vim.api.nvim_set_keymap('n', '<C-H>', '<C-W><C-H>', { noremap = true, silent = t
 
 -- indent and eol
 vim.opt.list = true
-vim.opt.listchars:append "eol:↲"
+vim.opt.listchars:append "eol:↩"
 vim.opt.listchars:append "tab:| "
 vim.opt.listchars:append "space:."
 
