@@ -4,10 +4,10 @@ font-family-bold = "Ubuntu Mono Bold"
 font-family-italic = "Ubuntu Mono Italic"
 font-family-bold-italic = "Ubuntu Mono Bold Italic"
 font-size = 14
-adjust-cell-height = 8%
+adjust-cell-height = 10%
 
 # color
-theme = iTerm2 Smoooooth
+theme = MaterialDarker
 
 # keybind
 keybind = super+backspace=text:\x15
