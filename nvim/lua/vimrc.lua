@@ -3,8 +3,12 @@ vim.o.compatible = false
 
 -- Colorscheme
 vim.o.background = 'dark'
-vim.g.gruvbox_contrast_dark = 'hard'
-vim.cmd('colorscheme gruvbox')
+-- vim.g.gruvbox_contrast_dark = 'hard'
+-- vim.cmd('colorscheme gruvbox')
+
+-- 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lighter-community' | 'darker-community'
+vim.g.material_theme_style =  'darker-community'
+vim.cmd('colorscheme material')
 
 -- Airline theme
 vim.g.airline_theme = 'deus'

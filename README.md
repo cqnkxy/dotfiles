@@ -6,6 +6,8 @@ git clone https://github.com/nvim-treesitter/nvim-treesitter.git
 
 git clone https://github.com/gruvbox-community/gruvbox.git
 
+git clone https://github.com/marko-cerovac/material.nvim.git
+
 git clone https://github.com/preservim/nerdtree.git
 
 git clone https://github.com/neovim/nvim-lspconfig.git
