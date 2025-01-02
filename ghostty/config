@@ -11,3 +11,5 @@ theme = MaterialDarker
 
 # keybind
 keybind = super+backspace=text:\x15
+
+copy-on-select = true
