@@ -39,19 +39,6 @@ vim.diagnostic.config({
 vim.o.updatetime = 250
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
--- Function to toggle vim.opt.list and vim.opt.number
-function ToggleListCharsAndNumber()
-  if vim.opt.list:get() then
-    vim.opt.list = false
-    vim.opt.number = false
-  else
-    vim.opt.list = true
-    vim.opt.number = true
-  end
-end
-
--- Map <leader>l to toggle list characters and number
-vim.api.nvim_set_keymap('n', '<leader>l', ':lua ToggleListCharsAndNumber()<CR>', { noremap = true, silent = true })
-
 -- also yank to the system clipboard
 vim.keymap.set('v', 'y', '"+y', { noremap = true })
+vim.keymap.set('n', 'yy', '"+yy', { noremap = true })
