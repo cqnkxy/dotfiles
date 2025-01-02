@@ -12,9 +12,7 @@ git clone https://github.com/preservim/nerdtree.git
 
 git clone https://github.com/neovim/nvim-lspconfig.git
 
-git clone https://github.com/vim-airline/vim-airline.git
-
-git clone https://github.com/vim-airline/vim-airline-themes.git
+git clone https://github.com/nvim-lualine/lualine.nvim.git
 
 git clone https://github.com/google/vim-codefmt.git
 

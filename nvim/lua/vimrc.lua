@@ -10,8 +10,8 @@ vim.o.background = 'dark'
 vim.g.material_theme_style =  'darker-community'
 vim.cmd('colorscheme material')
 
--- Airline theme
-vim.g.airline_theme = 'deus'
+-- lualine
+require('lualine').setup()
 
 -- treesitter config
 -- https://github.com/nvim-treesitter/nvim-treesitter
