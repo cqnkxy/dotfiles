@@ -34,6 +34,8 @@ vim.diagnostic.config({
   update_in_insert = false,
   float = { border = "rounded" },
 })
+-- Match the diagnostic floating window background to Tree-sitter's theme
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = vim.api.nvim_get_hl_by_name("Normal", true).background })
 
 -- Show line diagnostics automatically in hover window
 vim.o.updatetime = 250
