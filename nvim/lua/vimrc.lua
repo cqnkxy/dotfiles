@@ -65,9 +65,6 @@ vim.o.hlsearch = true
 vim.o.backspace = 'indent,eol,start'
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.cmd('highlight IncSearch ctermfg=white ctermbg=black')
-vim.cmd('highlight Search cterm=NONE ctermfg=white ctermbg=darkblue')
-vim.cmd('syntax on')
 vim.cmd('filetype plugin indent on')
 vim.cmd('packloadall')
 vim.o.tabstop = 2
