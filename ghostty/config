@@ -13,3 +13,6 @@ theme = MaterialDarker
 keybind = super+backspace=text:\x15
 
 copy-on-select = clipboard
+
+# cursor
+cursor-opacity = 0.5
