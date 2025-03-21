@@ -1,9 +1,11 @@
 # font
-font-family = "Ubuntu Mono"
-font-family-bold = "Ubuntu Mono Bold"
-font-family-italic = "Ubuntu Mono Italic"
-font-family-bold-italic = "Ubuntu Mono Bold Italic"
-font-size = 14
+font-family = "Fira Code Medium"
+font-family-bold = "Fira Code Bold"
+font-family-italic = "Fira Code Medium"
+font-family-bold-italic = "Fira Code Bold"
+font-feature = "cv02,cv06,ss01,ss05,ss08"
+font-size = 12
+adjust-cell-width = -10%
 adjust-cell-height = 10%
 
 # color
