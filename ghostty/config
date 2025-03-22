@@ -1,12 +1,10 @@
 # font
-font-family = "Fira Code Medium"
-font-family-bold = "Fira Code Bold"
-font-family-italic = "Fira Code Medium"
-font-family-bold-italic = "Fira Code Bold"
-font-feature = "cv02,cv06,ss01,ss05,ss08"
+font-family = "IBM Plex Mono Text"
+font-family-bold = "IBM Plex Mono Bold"
+font-family-italic = "IBM Plex Mono Italic"
+font-family-bold-italic = "IBM Plex Mono Bold Italic"
 font-size = 12
 adjust-cell-width = -10%
-adjust-cell-height = 10%
 
 # color
 theme = MaterialDarker
