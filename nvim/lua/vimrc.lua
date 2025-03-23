@@ -41,6 +41,7 @@ require'nvim-treesitter.configs'.setup {
 require("nvim-tree").setup()
 vim.api.nvim_set_keymap('n', '<leader>]', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>\\', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>f', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
 
 -- Google vim-codefmt
 vim.api.nvim_set_keymap('n', 'ff', ':FormatCode<CR>', { noremap = true, silent = true })
