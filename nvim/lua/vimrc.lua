@@ -38,6 +38,7 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- NvimTree
+require("nvim-tree").setup()
 vim.api.nvim_set_keymap('n', '<leader>]', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>\\', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
 
