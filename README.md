@@ -8,7 +8,7 @@ git clone https://github.com/gruvbox-community/gruvbox.git
 
 git clone https://github.com/cqnkxy/material.vim.git
 
-git clone https://github.com/preservim/nerdtree.git
+git clone https://github.com/nvim-tree/nvim-tree.lua.git
 
 git clone https://github.com/neovim/nvim-lspconfig.git
 
