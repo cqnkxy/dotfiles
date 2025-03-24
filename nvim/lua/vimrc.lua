@@ -37,11 +37,12 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
--- NvimTree
-require("nvim-tree").setup()
-vim.api.nvim_set_keymap('n', '<leader>]', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>\\', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>f', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
+-- NERDTree
+vim.api.nvim_set_keymap('n', '<leader>]', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>\\', ':NERDTreeFocus<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>f', ':NERDTreeFind<CR>', { noremap = true, silent = true })
+vim.g.NERDTreeIgnore = { '^bazel-.*', '^node_modules$' }
+vim.g.NERDTreeWinSize = '50'
 
 -- Google vim-codefmt
 vim.api.nvim_set_keymap('n', 'ff', ':FormatCode<CR>', { noremap = true, silent = true })
