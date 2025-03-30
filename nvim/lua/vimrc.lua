@@ -50,7 +50,8 @@ vim.api.nvim_set_keymap('x', 'fl', ':FormatLines<CR>', { noremap = true, silent 
 
 -- telescope
 vim.api.nvim_set_keymap('n', '<C-P>', ':Telescope find_files<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-]>', ':Telescope find_files<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-\\>', ':Telescope live_grep<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-]>', ':Telescope buffers<CR>', { noremap = true, silent = true })
 
 -- Coq
 vim.g.coq_settings = {
