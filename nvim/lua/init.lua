@@ -1,46 +1,197 @@
-require('vimrc')
-
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+-- =============================================================================
+-- 2. BOOTSTRAP LAZY.NVIM
+-- =============================================================================
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { 'gopls', 'pyright', 'tsserver' }
-local coq = require "coq"
-for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup (coq.lsp_ensure_capabilities({
-    on_attach = on_attach,
-  }))
-end
+-- =============================================================================
+-- 3. PLUGIN SETUP (Loads lua/plugins.lua)
+-- =============================================================================
+require("lazy").setup("plugins", {
+  git = {
+    timeout = 300,
+    url_format = "https://github.com/%s.git",
+  },
+  ui = { border = "rounded" }
+})
 
--- https://neovim.io/doc/user/diagnostic.html
+-- =============================================================================
+-- 3. CORE VIM OPTIONS
+-- =============================================================================
+vim.o.background = 'dark'
+vim.o.number = true
+vim.o.autoindent = true
+vim.o.smartindent = true
+vim.o.hlsearch = true
+vim.o.backspace = 'indent,eol,start'
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Tabs & Indentation
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
+vim.o.smarttab = true
+vim.o.softtabstop = 2
+
+-- Invisible characters (Indent & EOL)
+vim.opt.list = true
+vim.opt.listchars:append("eol:↴")
+vim.opt.listchars:append("tab:| ")
+vim.opt.listchars:append("space:·")
+
+-- Folds
+vim.o.foldmethod = 'indent'
+vim.o.foldlevelstart = 99
+vim.api.nvim_create_autocmd({'BufReadPost', 'FileReadPost'}, {
+  pattern = '*',
+  command = 'normal zR'
+})
+
+-- =============================================================================
+-- 4. DIAGNOSTICS & UI CONFIG
+-- =============================================================================
 vim.diagnostic.config({
   virtual_text = false,
   update_in_insert = false,
-  float = { border = "rounded" },
+  float = {
+    border = "rounded",
+  },
 })
--- Match the diagnostic floating window background to Tree-sitter's theme
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = vim.api.nvim_get_hl_by_name("Normal", true).background })
 
 -- Show line diagnostics automatically in hover window
 vim.o.updatetime = 250
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+vim.cmd([[
+  highlight! DiagnosticUnderlineInfo gui=underdotted
+  highlight! DiagnosticUnderlineWarn gui=underdotted
+  highlight! DiagnosticUnderlineError gui=underdotted
+]])
 
--- also yank to the system clipboard
-vim.keymap.set('v', 'y', '"+y', { noremap = true })
+-- =============================================================================
+-- 5. THEMES & UI PLUGINS (Crash-proofed)
+-- =============================================================================
+local function sonokai_color_scheme()
+  vim.g.sonokai_style = 'maia'
+  pcall(vim.cmd, "colorscheme sonokai")
+end
+sonokai_color_scheme()
+
+-- Lualine
+local lualine_ok, lualine = pcall(require, 'lualine')
+if lualine_ok then
+  lualine.setup({
+    options = { theme = 'papercolor_dark' }
+  })
+end
+
+-- Mini Indentscope
+local mini_indent_ok, mini_indent = pcall(require, 'mini.indentscope')
+if mini_indent_ok then
+  mini_indent.setup({
+    draw = {
+      delay = 100,
+      animation = function(s, n) return 5 end,
+      priority = 2,
+    },
+    options = {
+      border = 'both',
+      indent_at_cursor = true,
+      try_as_border = true,
+    },
+  })
+end
+
+-- =============================================================================
+-- 6. KEYMAPS
+-- =============================================================================
+
+-- NERDTree
+vim.keymap.set('n', '<leader>]', ':NERDTreeToggle<CR>', { silent = true })
+vim.keymap.set('n', '<leader>\\', ':NERDTreeFocus<CR>', { silent = true })
+vim.keymap.set('n', '<leader>f', ':NERDTreeFind<CR>', { silent = true })
+vim.g.NERDTreeWinSize = '50'
+
+-- Telescope & Search Commands
+vim.keymap.set('n', '<C-P>', '<cmd>Telescope myles<CR>', { silent = true })
+vim.keymap.set('n', '<C-\\>', '<cmd>Telescope biggrep r<CR>', { silent = true })
+vim.keymap.set('n', '<C-]>', '<cmd>Telescope buffers<CR>', { silent = true })
+
+-- Treat visually wrapped line as a separate line when moving cursor
+vim.keymap.set('n', 'j', [[v:count ? 'j' : 'gj']], { expr = true, silent = true })
+vim.keymap.set('n', 'k', [[v:count ? 'k' : 'gk']], { expr = true, silent = true })
+vim.keymap.set('n', '$', [[v:count ? '$' : 'g$']], { expr = true, silent = true })
+vim.keymap.set('n', '0', [[v:count ? '0' : 'g0']], { expr = true, silent = true })
+
+-- Window splits
+vim.keymap.set('n', '<C-J>', '<C-W><C-J>', { silent = true })
+vim.keymap.set('n', '<C-K>', '<C-W><C-K>', { silent = true })
+vim.keymap.set('n', '<C-L>', '<C-W><C-L>', { silent = true })
+vim.keymap.set('n', '<C-H>', '<C-W><C-H>', { silent = true })
+
+-- Yank to system clipboard
+vim.keymap.set({'n', 'v'}, 'y', '"+y', { noremap = true })
 vim.keymap.set('n', 'yy', '"+yy', { noremap = true })
+
+-- =============================================================================
+-- 7. TREESITTER & LANGUAGE SPECIFIC (Crash-proofed)
+-- =============================================================================
+
+-- Guard against neovim 0.11 ftplugins calling vim.treesitter.start()
+-- before parsers are installed.
+local orig_ts_start = vim.treesitter.start
+vim.treesitter.start = function(bufnr, lang, ...)
+  local ok = pcall(vim.treesitter.get_parser, bufnr or 0, lang)
+  if ok then
+    return orig_ts_start(bufnr, lang, ...)
+  end
+end
+
+vim.cmd([[autocmd FileType php setlocal autoindent smartindent]])
+
+-- =============================================================================
+-- 8. LSP, COQ (Modernized Neovim 0.11+ Native LSP)
+-- =============================================================================
+
+-- Coq settings
+vim.g.coq_settings = {
+  auto_start = true,
+  ['keymap.jump_to_mark'] = '<c-y>',
+}
+
+local on_attach = function(client, bufnr)
+  vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+  local opts = { buffer = bufnr, remap = false }
+
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+end
+
+vim.lsp.log.set_level("debug")
+
+local servers = {}
+
+-- Safely load Coq for capabilities
+local coq_ok, coq = pcall(require, "coq")
+local build_capabilities = coq_ok and coq.lsp_ensure_capabilities or function(opts) return opts end
+
+-- Modern Native Server Setup Loop
+for _, lsp in ipairs(servers) do
+  vim.lsp.config(lsp, build_capabilities({
+    on_attach = on_attach,
+  }))
+  vim.lsp.enable(lsp)
+end
