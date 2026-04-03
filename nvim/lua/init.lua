@@ -147,16 +147,12 @@ vim.keymap.set('n', 'yy', '"+yy', { noremap = true })
 -- 7. TREESITTER & LANGUAGE SPECIFIC (Crash-proofed)
 -- =============================================================================
 
--- Guard against neovim 0.11 ftplugins calling vim.treesitter.start()
--- before parsers are installed.
-local orig_ts_start = vim.treesitter.start
-vim.treesitter.start = function(bufnr, lang, ...)
-  local ok = pcall(vim.treesitter.get_parser, bufnr or 0, lang)
-  if ok then
-    return orig_ts_start(bufnr, lang, ...)
-  end
-end
-
+-- Enable treesitter highlighting for languages with installed parsers
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
 vim.cmd([[autocmd FileType php setlocal autoindent smartindent]])
 
 -- =============================================================================
@@ -180,9 +176,9 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 end
 
-vim.lsp.log.set_level("debug")
+-- vim.lsp.log.set_level("debug")
 
-local servers = {}
+local servers = {"gopls", "pyright"}
 
 -- Safely load Coq for capabilities
 local coq_ok, coq = pcall(require, "coq")

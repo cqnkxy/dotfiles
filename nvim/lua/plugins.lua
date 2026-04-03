@@ -21,24 +21,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      local ok, ts = pcall(require, 'nvim-treesitter.configs')
-      if not ok then
-        ok, ts = pcall(require, 'nvim-treesitter')
-      end
-
-      if ok then
-        ts.setup({
-          ensure_installed = { "lua", "vim", "vimdoc", "python", "javascript", "typescript", "tsx" },
-          highlight = {
-            enable = true,
-            additional_vim_regex_highlighting = false,
-          },
-          indent = {
-            enable = true,
-            disable = { "php" },
-          },
-        })
-      end
+      require('nvim-treesitter').setup({
+        ensure_installed = {"go", "lua", "vim", "vimdoc", "python", "javascript", "typescript", "tsx" },
+      })
     end
   },
 
