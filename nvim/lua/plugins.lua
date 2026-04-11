@@ -6,7 +6,6 @@ return {
   { "neovim/nvim-lspconfig" },
   { "ms-jpq/coq_nvim", branch = "coq" },
   { "ms-jpq/coq.artifacts", branch = "artifacts" },
-  { "nvimtools/none-ls.nvim" }, -- Successor to null-ls
   { "mfussenegger/nvim-dap" },
 
   -- Telescope & Search
@@ -22,7 +21,7 @@ return {
     build = ":TSUpdate",
     config = function()
       require('nvim-treesitter').setup({
-        ensure_installed = {"go", "lua", "vim", "vimdoc", "python", "javascript", "typescript", "tsx" },
+        ensure_installed = {"lua", "markdown", "markdown_inline", "go", "python", "javascript", "typescript", "tsx" },
       })
     end
   },
@@ -33,5 +32,14 @@ return {
   { "tiagofumo/vim-nerdtree-syntax-highlight" },
 
   -- Themes
-  { "sainnhe/sonokai" },
+  {
+    "sainnhe/sonokai",
+    lazy = false,
+    priority =
+    1000,
+    config = function()
+      vim.g.sonokai_style = 'maia'
+      vim.g.sonokai_enable_italic = true
+    end
+  },
 }

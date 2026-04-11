@@ -81,17 +81,13 @@ vim.cmd([[
 -- =============================================================================
 -- 5. THEMES & UI PLUGINS (Crash-proofed)
 -- =============================================================================
-local function sonokai_color_scheme()
-  vim.g.sonokai_style = 'maia'
-  pcall(vim.cmd, "colorscheme sonokai")
-end
-sonokai_color_scheme()
+pcall(vim.cmd, "colorscheme sonokai")
 
 -- Lualine
 local lualine_ok, lualine = pcall(require, 'lualine')
 if lualine_ok then
   lualine.setup({
-    options = { theme = 'papercolor_dark' }
+    options = { theme = 'auto' }
   })
 end
 
@@ -146,14 +142,12 @@ vim.keymap.set('n', 'yy', '"+yy', { noremap = true })
 -- =============================================================================
 -- 7. TREESITTER & LANGUAGE SPECIFIC (Crash-proofed)
 -- =============================================================================
-
 -- Enable treesitter highlighting for languages with installed parsers
 vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     pcall(vim.treesitter.start)
   end,
 })
-vim.cmd([[autocmd FileType php setlocal autoindent smartindent]])
 
 -- =============================================================================
 -- 8. LSP, COQ (Modernized Neovim 0.11+ Native LSP)
@@ -174,6 +168,16 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+
+  -- Format on save
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({ bufnr = bufnr, id = client.id })
+      end,
+    })
+  end
 end
 
 -- vim.lsp.log.set_level("debug")
