@@ -37,6 +37,13 @@ vim.o.backspace = 'indent,eol,start'
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+-- Auto-reload files modified outside Neovim
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
+
 -- Tabs & Indentation
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
