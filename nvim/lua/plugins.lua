@@ -33,13 +33,11 @@ return {
 
   -- Themes
   {
-    "sainnhe/sonokai",
+    "cqnkxy/ghostty.nvim",
     lazy = false,
-    priority =
-    1000,
+    priority = 1000,
     config = function()
-      vim.g.sonokai_style = 'maia'
-      vim.g.sonokai_enable_italic = true
+      vim.comand('colorscheme ghostty')
     end
   },
 }
