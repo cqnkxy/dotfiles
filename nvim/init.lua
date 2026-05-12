@@ -36,6 +36,7 @@ vim.o.hlsearch = true
 vim.o.backspace = 'indent,eol,start'
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.termguicolors = true
 
 -- Auto-reload files modified outside Neovim
 vim.o.autoread = true
@@ -88,8 +89,6 @@ vim.cmd([[
 -- =============================================================================
 -- 5. THEMES & UI PLUGINS (Crash-proofed)
 -- =============================================================================
-pcall(vim.cmd, "colorscheme sonokai")
-
 -- Lualine
 local lualine_ok, lualine = pcall(require, 'lualine')
 if lualine_ok then
